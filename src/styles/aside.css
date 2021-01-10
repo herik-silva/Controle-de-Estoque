@@ -1,0 +1,46 @@
+aside{
+    position: fixed;
+    top: 25px;
+    z-index: 1;
+
+    min-width: 210px;
+    width: 15%;
+    height: 100vh;
+    border-right: 2px solid #FFF;
+}
+
+#gerenciarProdutos, #controleEstoque{
+    width: 100%;
+    height: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    color: #FFF;
+    cursor: pointer;
+}
+
+#gerenciarProdutos:hover, #controleEstoque:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#gerenciarProdutos:active, #controleEstoque:active{
+    background-color: rgba(255, 255, 255, 0.1);
+    filter: brightness(50%);
+}
+
+
+.icon{
+    width: 80px;
+    height: 80px;
+    border: 2px solid #FFF;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 25px;
+}

@@ -3,9 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/frame.css">
+    <link rel="stylesheet" href="./styles/aside.css">
     <title>Stop Car</title>
 </head>
-<body>
-    <h2>Stop Car</h2>
+<body class="invisivel">
+    <div class="frame">
+        <div class="logo">Stop Car</div>
+        <div class="btnActions">
+            <span id="minimizar"><img src="../assets/minimize.png" draggable="false"></span>
+            <span id="maximizar"><img src="../assets//maximize.png" id="max" draggable="false"> <img src="../assets/unmaximize.png" id="unmax" draggable="false"></span>
+            <span id="fechar"><img src="../assets/cross.png" draggable="false"></span>
+        </div>
+    </div>
+
+    <aside>
+        <div id="gerenciarProdutos">
+            <div class="icon">
+                <img src="../assets/gerenciar.png" draggable="false">
+            </div>
+            <h4>Gerenciamento de Produtos</h4>
+        </div>
+
+        <div id="controleEstoque">
+            <div class="icon">
+                <img src="../assets/controle.png" draggable="false">
+            </div>
+            <h4>Controle de Estoque</h4>
+        </div>
+    </aside>
+
+    <script src="./renderer.js"></script>
 </body>
 </html>

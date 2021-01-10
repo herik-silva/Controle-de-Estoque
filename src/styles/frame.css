@@ -1,0 +1,57 @@
+.frame{
+    position: fixed;
+    top: 0;
+    z-index: 2;
+
+    width: 100%;
+    min-height: 25px;
+    background-color: #000;
+    color: #FFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo{
+    padding-left: 10px;
+    width: 90%;
+    -webkit-app-region: drag;
+}
+
+.btnActions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+    
+    width: 150px;
+    height: 100%;
+}
+
+.btnActions span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 25px;
+}
+
+.btnActions span:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btnActions #fechar:hover{
+    background-color: rgba(255, 0, 0, 0.7);
+}
+
+.btnActions img{
+    width: 16px;
+    height: 16px;
+}
+
+#unmax{
+    display: none;
+}
