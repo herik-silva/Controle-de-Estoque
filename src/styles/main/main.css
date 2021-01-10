@@ -1,0 +1,12 @@
+main{
+    margin-left: 250px;
+    margin-top: 25px;
+    max-width: 85%;
+    height: 95vh;
+
+    color: #FFF; 
+    
+    display: flex;
+    justify-content: center;
+
+}
