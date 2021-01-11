@@ -6,7 +6,10 @@ function criarJanela(){
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        minWidth: 800,
+        minHeight: 600,
         darkTheme: true,
+        show: false,
         frame: false,
         webPreferences: {
             nodeIntegration: true
@@ -15,7 +18,11 @@ function criarJanela(){
 
     win.loadFile('./src/index.html');
 
-    mainController(win);
+    win.on('ready-to-show',()=>{
+        win.show();
+        mainController(win);
+    });
+
 }
 
 app.whenReady().then(criarJanela);
