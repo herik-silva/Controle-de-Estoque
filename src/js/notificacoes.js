@@ -1,4 +1,4 @@
-function initNotificacoes(){
+module.exports = function initNotificacoes(){
     const notificacoes = {
         ultimoId: 1,
         container: document.querySelector('.container-notificacoes'),
@@ -75,7 +75,5 @@ function initNotificacoes(){
         notificacoes.novaNotificacao('Produto em baixo estoque! '+(i+1));
     }
 
-    console.log(notificacoes.avisos);
+    return notificacoes;
 }
-
-initNotificacoes();

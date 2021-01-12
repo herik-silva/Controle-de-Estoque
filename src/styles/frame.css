@@ -44,10 +44,12 @@
     justify-content: center;
     width: 50%;
     height: 25px;
+
+    transition: 0.3s ease-out all;
 }
 
 .btnActions span:hover{
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #202020;
 }
 
 .btnActions #fechar:hover{
