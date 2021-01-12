@@ -1,5 +1,5 @@
 module.exports = function mainController(window){
-    const { ipcMain, BrowserWindow, screen } = require('electron');
+    const { ipcMain, screen } = require('electron');
 
     ipcMain.on('main/fechar',()=>{
         window.close();

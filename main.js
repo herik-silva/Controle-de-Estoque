@@ -8,9 +8,9 @@ function criarJanela(){
         height: 600,
         minWidth: 800,
         minHeight: 600,
-        darkTheme: true,
         show: false,
         frame: false,
+        icon: './assets/logo.png',
         webPreferences: {
             nodeIntegration: true
         }
@@ -20,9 +20,9 @@ function criarJanela(){
 
     win.on('ready-to-show',()=>{
         win.show();
-        mainController(win);
     });
-
+    
+    mainController(win);
 }
 
 app.whenReady().then(criarJanela);

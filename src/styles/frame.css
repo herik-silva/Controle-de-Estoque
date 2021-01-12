@@ -5,7 +5,7 @@
 
     width: 100%;
     min-height: 25px;
-    background-color: #000;
+    background-color: #101010;
     color: #FFF;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
@@ -20,6 +20,13 @@
     padding-left: 10px;
     width: 90%;
     -webkit-app-region: drag;
+    
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    height: 13px;
 }
 
 .btnActions{

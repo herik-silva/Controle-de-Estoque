@@ -18,10 +18,9 @@ function initNotificacoes(){
             novaNotificacao.texto.innerText = notificacao.texto;
 
             novaNotificacao.button.setAttribute('class','marcarLido');
-            novaNotificacao.button.innerText = 'Limpar Notificações';
+            novaNotificacao.button.innerText = 'Marcar como Lido';
 
             novaNotificacao.button.addEventListener('click',()=>{
-                console.log("Remover Item: " + item.id);
                 notificacoes.removerNotificacao(item.id);
             })
 
@@ -55,10 +54,27 @@ function initNotificacoes(){
                     return
                }
             });
+        },
+
+        limparNotificacoes: ()=>{
+            notificacoes.avisos.forEach((item)=>{
+                notificacoes.container.removeChild(item);
+            });
+
+            while(notificacoes.avisos.length>0){
+                notificacoes.avisos.pop();
+            }
         }
     }
 
-    notificacoes.novaNotificacao('Produto em baixo estoque!');
+    const btnLimparNotificacoes = document.querySelector('#limparNotificacoes');
+    btnLimparNotificacoes.addEventListener('click', notificacoes.limparNotificacoes);
+
+    const max=30;
+    for(let i=0; i<max; i++){
+        notificacoes.novaNotificacao('Produto em baixo estoque! '+(i+1));
+    }
+
     console.log(notificacoes.avisos);
 }
 
