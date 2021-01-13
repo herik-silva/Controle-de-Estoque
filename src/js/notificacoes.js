@@ -51,12 +51,16 @@ module.exports = function initNotificacoes(){
                     notificacoes.container.removeChild(item);
                     notificacoes.avisos.pop();
 
+                    console.log("Limpando o item: " + id);
+
                     return
                }
             });
         },
 
         limparNotificacoes: ()=>{
+            console.log("LIMPANDO TODAS AS NOTIFICAÇÕES");
+
             notificacoes.avisos.forEach((item)=>{
                 notificacoes.container.removeChild(item);
             });
@@ -67,13 +71,8 @@ module.exports = function initNotificacoes(){
         }
     }
 
-    const btnLimparNotificacoes = document.querySelector('#limparNotificacoes');
-    btnLimparNotificacoes.addEventListener('click', notificacoes.limparNotificacoes);
-
-    const max=30;
-    for(let i=0; i<max; i++){
-        notificacoes.novaNotificacao('Produto em baixo estoque! '+(i+1));
-    }
-
+    document.querySelector('#limparNotificacoes')
+        .addEventListener('click', notificacoes.limparNotificacoes);
+    
     return notificacoes;
 }

@@ -2,15 +2,18 @@ module.exports = function mainController(window){
     const { ipcMain, screen } = require('electron');
 
     ipcMain.on('main/fechar',()=>{
+        console.log("FECHANDO APP");
         window.close();
     });
 
     ipcMain.on('main/maximizar',(event)=>{
         if(!window.isMaximized()){
+            console.log("MAXIMIZANDO O APP")
             window.maximize();
             event.reply('renderer/trocarIcone', true);
         }
         else{
+            console.log("SAINDO DO MAXIMIZADO")
             window.unmaximize();
             event.reply('renderer/trocarIcone', false);
         }
@@ -30,6 +33,7 @@ module.exports = function mainController(window){
 
     ipcMain.on('main/minimizar',()=>{
         if(!window.isMinimized()){
+            console.log("MINIMIZANDO O APP")
             window.minimize();
         }
     })

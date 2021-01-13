@@ -16,6 +16,8 @@ button{
     justify-content: center;
 
     box-sizing: border-box;
+
+    display: none;
 }
 
 .infoText{
@@ -39,7 +41,10 @@ button{
     overflow: auto;
     overflow-x: hidden;
 
-    padding: 0 10px
+    scroll-behavior: smooth;
+
+    padding: 0 10px;
+
 }
 
 .container-notificacoes::-webkit-scrollbar {

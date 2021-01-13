@@ -1,5 +1,6 @@
 function initRenderer(){
     const { ipcRenderer } = require('electron');
+    const path = require('path');
 
     const TAM_BARRA_TAREFAS = 40;
 
@@ -17,6 +18,14 @@ function initRenderer(){
             height: window.innerHeight+TAM_BARRA_TAREFAS
         }
     }
+
+    const app = require(path.resolve('src','js','app.js'))();
+    
+    for(let i=0; i<TAM_BARRA_TAREFAS; i++){
+        app.notificacao.novaNotificacao('Mensagem do sistema ' +(i+1)+"!");
+    }
+
+    
 
     janela.fechar.addEventListener('click',()=>{
         ipcRenderer.send('main/fechar', null);

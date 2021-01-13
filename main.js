@@ -4,9 +4,9 @@ function criarJanela(){
     const mainController = require('./Controller/mainController');
 
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        minWidth: 800,
+        width: 1024,
+        height: 768,
+        minWidth: 850,
         minHeight: 600,
         show: false,
         frame: false,

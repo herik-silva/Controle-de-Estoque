@@ -8,9 +8,9 @@ aside{
     border-right: 2px solid #FFF;
 }
 
-#gerenciarProdutos, #controleEstoque{
+#gerenciarProdutos, #controleEstoque, #btnNotificacoes{
     width: 100%;
-    height: 50%;
+    height: 33.33%;
     
     display: flex;
     flex-direction: column;
@@ -21,11 +21,11 @@ aside{
     cursor: pointer;
 }
 
-#gerenciarProdutos:hover, #controleEstoque:hover{
+#gerenciarProdutos:hover, #controleEstoque:hover, #btnNotificacoes:hover{
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-#gerenciarProdutos:active, #controleEstoque:active{
+#gerenciarProdutos:active, #controleEstoque:active, #btnNotificacoes:active{
     background-color: rgba(255, 255, 255, 0.1);
     filter: brightness(50%);
 }

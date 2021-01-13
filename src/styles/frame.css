@@ -27,6 +27,21 @@
 
 .logo img{
     height: 13px;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.btnNotificacoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: .1s ease-out all;
+}
+
+.btnNotificacoes img{
+    width: 20px;
+    height: 20px;
 }
 
 .btnActions{
