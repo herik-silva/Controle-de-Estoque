@@ -31,8 +31,8 @@ module.exports = function initApp(){
             app.main.style.marginLeft = '0';
             app.main.style.maxWidth = '100%';
             app.btnEsconderMenu.style.transform = "rotate(180deg)";
-            app.btnEsconderMenu.style.borderBottomLeftRadius = '10px';
-            app.btnEsconderMenu.style.borderTopLeftRadius = '10px';
+            app.btnEsconderMenu.style.borderBottomLeftRadius = '20px';
+            app.btnEsconderMenu.style.borderTopLeftRadius = '20px';
             app.btnEsconderMenu.style.borderBottomRightRadius = '0px';
             app.btnEsconderMenu.style.borderTopRightRadius = '0px';
             app.btnEsconderMenu.style.borderLeft = '2px solid #FFF';
@@ -45,8 +45,8 @@ module.exports = function initApp(){
             app.btnEsconderMenu.style.transform = "rotate(0)";
             app.btnEsconderMenu.style.borderBottomLeftRadius = '0px';
             app.btnEsconderMenu.style.borderTopLeftRadius = '0px';
-            app.btnEsconderMenu.style.borderBottomRightRadius = '10px';
-            app.btnEsconderMenu.style.borderTopRightRadius = '10px';
+            app.btnEsconderMenu.style.borderBottomRightRadius = '20px';
+            app.btnEsconderMenu.style.borderTopRightRadius = '20px';
             app.btnEsconderMenu.style.borderRight = '2px solid #FFF';
             app.btnEsconderMenu.style.borderLeft = 'none';
         }
@@ -62,7 +62,7 @@ module.exports = function initApp(){
         app.trocarJanela(app.gerenciamentoProdutos);
     });
 
-    app.trocarJanela(app.notificacoes);
+    app.trocarJanela(app.gerenciamentoProdutos);
     
     return app;
 }

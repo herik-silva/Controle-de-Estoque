@@ -23,7 +23,7 @@ function initRenderer(){
     
     for(let i=0; i<TAM_BARRA_TAREFAS; i++){
         app.notificacao.novaNotificacao('Mensagem do sistema ' +(i+1)+"!");
-    }    
+    }
 
     janela.fechar.addEventListener('click',()=>{
         ipcRenderer.send('main/fechar', null);

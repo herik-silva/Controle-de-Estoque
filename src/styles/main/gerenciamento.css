@@ -68,11 +68,11 @@ table input{
     background-color: #101010;
 }
 
-tr:hover{
+.linha:hover{
     background-color: #252525;
 }
 
-tr:active{
+td:hover{
     background-color: #202020;
 }
 
@@ -99,11 +99,14 @@ tr:active{
 .btnsGerenciamento button{
     width: 30%;
     height: 25px;
-    border: none;
+    border: 1px solid #171717;
+    border-radius: 10px;
 
     background-color: #FFF;
     cursor: pointer;
     font-weight: 700;
+
+    margin-right: 10px;
 }
 
 .btnsGerenciamento button:hover{
@@ -160,4 +163,13 @@ tr:active{
 .imgicon img{
     width: 20px;
     height: 20px;
+}
+
+.input{
+    font-size: 14px; 
+    font-weight: 700;
+    background-color: transparent; 
+    border: none; 
+    text-align: center; 
+    color: #FFF;
 }
