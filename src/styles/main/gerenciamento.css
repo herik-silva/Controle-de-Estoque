@@ -25,13 +25,23 @@
     border-bottom-right-radius: 0;
 }
 
+table div{
+    min-width: 200px;
+    overflow: hidden;
+    resize: horizontal;
+}
+
+table input{
+    width: 100%;
+}
+
 .produtos::-webkit-scrollbar {
     width: 8px;
     height: 10px;
 }
 
 .produtos::-webkit-scrollbar-thumb {
-    background: #FFF;
+    background: #bbb;
 }
 
 .gerenciamentoProdutos table{
@@ -40,13 +50,9 @@
 }
 
 .gerenciamentoProdutos td{
-    border: 1px solid #FFF;
     padding: 5px;
     min-width: 50px;
-}
-
-th{
-    border: 1px solid #FFF;
+    border: 1px solid #171717;
 }
 
 .gerenciamentoProdutos tr{
@@ -59,6 +65,7 @@ th{
 .gerenciamentoProdutos th{
     box-sizing: border-box;
     flex-wrap: wrap;
+    background-color: #101010;
 }
 
 tr:hover{
@@ -66,7 +73,7 @@ tr:hover{
 }
 
 tr:active{
-    background-color: #131313;
+    background-color: #202020;
 }
 
 .ferramentas{

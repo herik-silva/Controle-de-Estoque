@@ -1,12 +1,29 @@
 main{
-    margin-left: 250px;
     margin-top: 25px;
+    margin-left: 250px;
     max-width: 85%;
     height: 95vh;
 
     color: #FFF; 
     
     display: flex;
-    justify-content: center;
+}
 
+main .icon{
+    width: 32px;
+    height: 32px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+main .icon img{
+    width: 20px;
+}
+
+#esconderMenu{
+    margin: 10px 10px 0 0;
+    border-left: none;
+    cursor: pointer;
+
+    transition: .1s ease-out all;
 }
