@@ -1,3 +1,58 @@
+.alerta{
+    position: absolute;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    background-color: #101010;
+    width: 50%;
+    max-width: 400px;
+    height: 0%;
+    
+    border-radius: 15px;
+    box-shadow: 10px 10px #000111;
+
+    transition: .2s ease-in-out all;
+}
+
+.opcoes{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    width: 100%;
+}
+
+.remover, .cancelar{
+    width: 100px;
+    height: 30px;
+
+    border: none;
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: .2s ease-out all;
+}
+
+.remover{
+    background-color: red;
+    color: #FFF;
+}
+
+.remover:hover{
+    transform: scale(1.1);
+    background-color: rgb(200, 0, 0);
+}
+
+.cancelar:hover{
+    transform: scale(1.1);
+    background-color: rgb(200,200,200);
+}
+
 .gerenciamentoProdutos{
     width: 94%;
     max-height: 100vh;
@@ -132,16 +187,19 @@ td:hover{
 
     border: none;
     text-align: center;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 1px solid #000;
-    border-right: none;
+
     transition: .2s ease-out all;
 }
 
 .busca input:focus{
     font-weight: 700;
     background-color: #dbdbdb;
+
+    border: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #000;
+    border-right: none;
 }
 
 .busca .imgicon{
@@ -149,9 +207,7 @@ td:hover{
     height: 25px;
     
     border: 1px solid #000;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-left: none;
+    border-radius: 10px;
 
     display: flex;
     align-items: center;

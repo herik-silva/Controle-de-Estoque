@@ -1,17 +1,23 @@
 module.exports = function initGerenciamento(){
     const gerenciamento = {
-        // Lista dos Produtos
-        produtos: [],
-        tabela: document.querySelector('table'),
-        produtoSelecionado: null,
+        elementoAlerta: {
+            container: document.querySelector('.alerta'),
+            nomeProduto: document.getElementById('nomeProduto'),
+            botoes: {
+                remover: document.querySelector('.remover'),
+                cancelar: document.querySelector('.cancelar')
+            }
+        },
         elementoSelecionado: null,
+        produtos: [],
+        produtoSelecionado: null,
+        tabela: document.querySelector('table'),
         ultimoId: 0,
 
         btnNovoProduto: document.getElementById('novoProduto'),
         btnRemoverProduto: document.getElementById('removerProduto'),
         txt_pesquisa: document.getElementById('txt_pesquisa'),
         btnPesquisar: document.getElementById('pesquisar'),
-
 
         novoProduto: ()=>{
             const produto = {
@@ -85,14 +91,16 @@ module.exports = function initGerenciamento(){
                 console.log("ID Selecionado: "+gerenciamento.produtoSelecionado);
             });
 
-            document.querySelector('table').appendChild(tr);
+            const table = document.querySelector('table');
+            table.appendChild(tr);
+
+            table.scrollIntoView(false);
 
             gerenciamento.produtos.push(tr);
+
         },
 
         removerProduto: (id)=>{
-            console.log("REMOVENDO O: " + id);
-
             gerenciamento.produtos.forEach((produto, index)=>{
                 if(produto.id == id){
                     for(let i=index; i<gerenciamento.produtos.length; i++){
@@ -105,28 +113,73 @@ module.exports = function initGerenciamento(){
                     return
                 }
             })
-        }
+        },
+
+        alerta: (produto)=>{
+            console.log("Alerta!");
+            console.log(produto.children[1].children[0].value);
+            gerenciamento.elementoAlerta.container.style.display = 'flex';
+            for(let i=0; i<gerenciamento.elementoAlerta.container.childElementCount; i++){
+                gerenciamento.elementoAlerta.container.children[i].style.display = 'flex';
+            }
+
+            setTimeout(()=>{
+                gerenciamento.elementoAlerta.container.style.height = '25%';
+            },0);
+
+            gerenciamento.elementoAlerta.nomeProduto.innerText = produto.children[1].children[0].value;
+        },
+
+        fecharAlerta: ()=>{
+            gerenciamento.elementoAlerta.container.style.height = '0%';
+
+            for(let i=0; i<gerenciamento.elementoAlerta.container.childElementCount; i++){
+                gerenciamento.elementoAlerta.container.children[i].style.display = 'none';
+            }
     
+            setTimeout(()=>{
+                gerenciamento.elementoAlerta.container.style.display = 'none';
+            },300);
+        }
     }
 
     gerenciamento.btnNovoProduto.addEventListener('click', gerenciamento.novoProduto);
+    
+    // Mostrar Alerta
     gerenciamento.btnRemoverProduto.addEventListener('click',()=>{
         if(gerenciamento.produtoSelecionado != null){
-            gerenciamento.removerProduto(gerenciamento.produtoSelecionado);
-            gerenciamento.produtoSelecionado = null;
+            gerenciamento.alerta(gerenciamento.elementoSelecionado);
         }
     });
 
     gerenciamento.btnPesquisar.addEventListener('click',()=>{
+        gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '0px';
+        gerenciamento.btnPesquisar.style.borderTopLeftRadius = '0px';
+        gerenciamento.btnPesquisar.style.borderLeft = 'none';
+        
         gerenciamento.txt_pesquisa.style.width = '100%';
         gerenciamento.txt_pesquisa.focus();
     });
 
+    // Remove produto
+    gerenciamento.elementoAlerta.botoes.remover.addEventListener('click',()=>{
+        console.log("REMOVENDO: " + gerenciamento.produtoSelecionado);
+
+        gerenciamento.removerProduto(gerenciamento.produtoSelecionado);
+        gerenciamento.fecharAlerta();
+        gerenciamento.produtoSelecionado = null;
+    });
+
+    gerenciamento.elementoAlerta.botoes.cancelar.addEventListener('click', gerenciamento.fecharAlerta);
+
     document.addEventListener('click',(event)=>{
-        console.log(event.target);
         if(event.target.id != 'pesquisar' && event.target.id!='txt_pesquisa'){
             gerenciamento.txt_pesquisa.style.width = '0%';
 
+            gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '10px';
+            gerenciamento.btnPesquisar.style.borderTopLeftRadius = '10px';
+            gerenciamento.btnPesquisar.style.borderLeft = '1px solid black';
+            
         }
     })
 
