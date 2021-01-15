@@ -74,8 +74,8 @@ module.exports = function initGerenciamento(){
 
             tr.addEventListener('click',()=>{
                 gerenciamento.produtoSelecionado = tr.id;
-                console.log(gerenciamento.produtoSelecionado);
-            })
+                console.log("ID Selecionado: "+gerenciamento.produtoSelecionado);
+            });
 
             document.querySelector('table').appendChild(tr);
 
