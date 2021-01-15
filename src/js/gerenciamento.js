@@ -4,10 +4,13 @@ module.exports = function initGerenciamento(){
         produtos: [],
         tabela: document.querySelector('table'),
         produtoSelecionado: null,
+        elementoSelecionado: null,
         ultimoId: 0,
 
         btnNovoProduto: document.getElementById('novoProduto'),
         btnRemoverProduto: document.getElementById('removerProduto'),
+        txt_pesquisa: document.getElementById('txt_pesquisa'),
+        btnPesquisar: document.getElementById('pesquisar'),
 
 
         novoProduto: ()=>{
@@ -73,7 +76,12 @@ module.exports = function initGerenciamento(){
             tr.appendChild(novoProduto.quantidade);
 
             tr.addEventListener('click',()=>{
+                if(gerenciamento.elementoSelecionado != null){
+                    gerenciamento.elementoSelecionado.style.background = 'initial';
+                }
                 gerenciamento.produtoSelecionado = tr.id;
+                gerenciamento.elementoSelecionado = tr;
+                tr.style.backgroundColor = '#252525';
                 console.log("ID Selecionado: "+gerenciamento.produtoSelecionado);
             });
 
@@ -103,7 +111,23 @@ module.exports = function initGerenciamento(){
 
     gerenciamento.btnNovoProduto.addEventListener('click', gerenciamento.novoProduto);
     gerenciamento.btnRemoverProduto.addEventListener('click',()=>{
-        gerenciamento.removerProduto(gerenciamento.produtoSelecionado);
+        if(gerenciamento.produtoSelecionado != null){
+            gerenciamento.removerProduto(gerenciamento.produtoSelecionado);
+            gerenciamento.produtoSelecionado = null;
+        }
+    });
+
+    gerenciamento.btnPesquisar.addEventListener('click',()=>{
+        gerenciamento.txt_pesquisa.style.width = '100%';
+        gerenciamento.txt_pesquisa.focus();
+    });
+
+    document.addEventListener('click',(event)=>{
+        console.log(event.target);
+        if(event.target.id != 'pesquisar' && event.target.id!='txt_pesquisa'){
+            gerenciamento.txt_pesquisa.style.width = '0%';
+
+        }
     })
 
     return gerenciamento;

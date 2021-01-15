@@ -67,14 +67,16 @@
             <h1 class="infoText">Gerenciamento de Produtos</h1>
             <div class="produtos">
                 <table>
-                    <tr>
-                        <th><div>Código</div></th>
-                        <th><div>Nome</div></th>
-                        <th><div>Marca</div></th>
-                        <th><div>Preço de Custo</div></th>
-                        <th><div>Preço de Venda</div></th>
-                        <th><div>Quantidade</div></th>
-                    </tr>
+                    <thead>
+                        <tr class="nome-colunas">
+                            <th><div>Código</div></th>
+                            <th><div>Nome</div></th>
+                            <th><div>Marca</div></th>
+                            <th><div>Preço de Custo</div></th>
+                            <th><div>Preço de Venda</div></th>
+                            <th><div>Quantidade</div></th>
+                        </tr>
+                    </thead>
                 </table>
             </div>
             <div class="ferramentas">
@@ -84,8 +86,8 @@
                     <button id="removerProduto">Remover Produto</button>
                 </div>
                 <div class="busca">
-                    <input type="text" placeholder="Pesquisar">
-                    <div class="imgicon">
+                    <input type="text" placeholder="Pesquisar" id='txt_pesquisa'>
+                    <div class="imgicon" id="pesquisar">
                         <img src="../assets/lupa.png">
                     </div>
                 </div>        

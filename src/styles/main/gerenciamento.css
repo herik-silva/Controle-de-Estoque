@@ -38,10 +38,15 @@ table input{
 .produtos::-webkit-scrollbar {
     width: 8px;
     height: 10px;
+    background-color: #101010;
 }
 
 .produtos::-webkit-scrollbar-thumb {
-    background: #bbb;
+    background: #FFF;
+}
+
+.produtos::-webkit-scrollbar-thumb:hover {
+    background: #bfbfbf;
 }
 
 .gerenciamentoProdutos table{
@@ -59,17 +64,16 @@ table input{
     box-sizing: border-box;
     flex-wrap: wrap;
     width: 100%;
-
+    cursor: pointer;
 }
 
-.gerenciamentoProdutos th{
+thead th{
     box-sizing: border-box;
     flex-wrap: wrap;
     background-color: #101010;
-}
-
-.linha:hover{
-    background-color: #252525;
+    position: sticky;
+    top: 2px;
+    height: 25px;
 }
 
 td:hover{
@@ -119,11 +123,11 @@ td:hover{
 
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .busca input{
-    min-width: 100px;
-    width: 300px;
+    width: 0%;
     height: 25px;
 
     border: none;
@@ -132,10 +136,12 @@ td:hover{
     border-bottom-left-radius: 10px;
     border: 1px solid #000;
     border-right: none;
+    transition: .2s ease-out all;
 }
 
 .busca input:focus{
     font-weight: 700;
+    background-color: #dbdbdb;
 }
 
 .busca .imgicon{
@@ -154,6 +160,7 @@ td:hover{
     background-color: rgb(231, 230, 230);
     transition: .1s ease-out all;
     cursor: pointer;
+
 }
 
 .imgicon:hover{
@@ -163,6 +170,8 @@ td:hover{
 .imgicon img{
     width: 20px;
     height: 20px;
+    pointer-events: none;
+
 }
 
 .input{
