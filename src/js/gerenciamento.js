@@ -1,4 +1,5 @@
 module.exports = function initGerenciamento(){
+    // Objeto com todas as interações com a parte de gerenciamento de proutos
     const gerenciamento = {
         elementoAlerta: {
             container: document.querySelector('.alerta'),
@@ -140,9 +141,59 @@ module.exports = function initGerenciamento(){
             setTimeout(()=>{
                 gerenciamento.elementoAlerta.container.style.display = 'none';
             },300);
+        },
+
+        mostrarInput: ()=>{
+            gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '0px';
+            gerenciamento.btnPesquisar.style.borderTopLeftRadius = '0px';
+            gerenciamento.btnPesquisar.style.borderLeft = 'none';
+            
+            gerenciamento.txt_pesquisa.style.width = '100%';
+            gerenciamento.txt_pesquisa.focus();
+        },
+
+        esconderInput: ()=>{
+            gerenciamento.txt_pesquisa.style.width = '0%';
+
+            gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '10px';
+            gerenciamento.btnPesquisar.style.borderTopLeftRadius = '10px';
+            gerenciamento.btnPesquisar.style.borderLeft = '1px solid black';
+        },
+
+        pesquisaOn: ()=>{
+            gerenciamento.mostrarInput();
+            gerenciamento.btnPesquisar.removeEventListener('click', gerenciamento.pesquisaOn);
+            gerenciamento.btnPesquisar.addEventListener('click', gerenciamento.pesquisar);
+        },
+
+        pesquisaOff: ()=>{
+            gerenciamento.esconderInput();
+            gerenciamento.btnPesquisar.removeEventListener('click',gerenciamento.pesquisar);
+            gerenciamento.btnPesquisar.addEventListener('click', gerenciamento.pesquisaOn);
+            gerenciamento.txt_pesquisa.value = "";
+        },
+
+        pesquisar: ()=>{
+            if(gerenciamento.txt_pesquisa.value != ''){
+                console.log(`Pesquisando por ${gerenciamento.txt_pesquisa.value}`);
+                gerenciamento.pesquisaOff();
+            }
+            else{
+                gerenciamento.txt_pesquisa.style.border = '1px solid red';
+                gerenciamento.txt_pesquisa.style.borderRight = 'none';
+                gerenciamento.txt_pesquisa.style.borderTopRightRadius = '0px';
+                gerenciamento.txt_pesquisa.style.borderBottomRightRadius = '0px';
+
+
+                gerenciamento.txt_pesquisa.style.borderRadius = '10px';
+                gere
+
+            }
+            
         }
     }
 
+    // Adiciona um novo produto
     gerenciamento.btnNovoProduto.addEventListener('click', gerenciamento.novoProduto);
     
     // Mostrar Alerta
@@ -152,14 +203,8 @@ module.exports = function initGerenciamento(){
         }
     });
 
-    gerenciamento.btnPesquisar.addEventListener('click',()=>{
-        gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '0px';
-        gerenciamento.btnPesquisar.style.borderTopLeftRadius = '0px';
-        gerenciamento.btnPesquisar.style.borderLeft = 'none';
-        
-        gerenciamento.txt_pesquisa.style.width = '100%';
-        gerenciamento.txt_pesquisa.focus();
-    });
+    // Mostra o input de pesquisa
+    gerenciamento.btnPesquisar.addEventListener('click',gerenciamento.pesquisaOn);
 
     // Remove produto
     gerenciamento.elementoAlerta.botoes.remover.addEventListener('click',()=>{
@@ -170,18 +215,16 @@ module.exports = function initGerenciamento(){
         gerenciamento.produtoSelecionado = null;
     });
 
+    // Cancela a opção de remover
     gerenciamento.elementoAlerta.botoes.cancelar.addEventListener('click', gerenciamento.fecharAlerta);
 
+    // Ouvindo qualquer evento de click
     document.addEventListener('click',(event)=>{
         if(event.target.id != 'pesquisar' && event.target.id!='txt_pesquisa'){
-            gerenciamento.txt_pesquisa.style.width = '0%';
 
-            gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '10px';
-            gerenciamento.btnPesquisar.style.borderTopLeftRadius = '10px';
-            gerenciamento.btnPesquisar.style.borderLeft = '1px solid black';
-            
+            gerenciamento.btnPesquisar.addEventListener('click',gerenciamento.pesquisaOn);
         }
-    })
+    });
 
     return gerenciamento;
 }
