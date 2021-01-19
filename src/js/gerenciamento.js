@@ -19,6 +19,7 @@ module.exports = function initGerenciamento(){
         btnRemoverProduto: document.getElementById('removerProduto'),
         txt_pesquisa: document.getElementById('txt_pesquisa'),
         btnPesquisar: document.getElementById('pesquisar'),
+        btnLimparPesquisa: document.getElementById('limparBusca'),
 
         novoProduto: ()=>{
             const produto = {
@@ -147,6 +148,10 @@ module.exports = function initGerenciamento(){
             gerenciamento.btnPesquisar.style.borderBottomLeftRadius = '0px';
             gerenciamento.btnPesquisar.style.borderTopLeftRadius = '0px';
             gerenciamento.btnPesquisar.style.borderLeft = 'none';
+            gerenciamento.txt_pesquisa.style.border = '1px solid black';
+            gerenciamento.txt_pesquisa.style.borderRight = 'none';
+            gerenciamento.txt_pesquisa.style.borderBottomRightRadius = '0px';
+            gerenciamento.txt_pesquisa.style.borderTopRightRadius = '0px';
             
             gerenciamento.txt_pesquisa.style.width = '100%';
             gerenciamento.txt_pesquisa.focus();
@@ -164,6 +169,7 @@ module.exports = function initGerenciamento(){
             gerenciamento.mostrarInput();
             gerenciamento.btnPesquisar.removeEventListener('click', gerenciamento.pesquisaOn);
             gerenciamento.btnPesquisar.addEventListener('click', gerenciamento.pesquisar);
+
         },
 
         pesquisaOff: ()=>{
@@ -171,25 +177,55 @@ module.exports = function initGerenciamento(){
             gerenciamento.btnPesquisar.removeEventListener('click',gerenciamento.pesquisar);
             gerenciamento.btnPesquisar.addEventListener('click', gerenciamento.pesquisaOn);
             gerenciamento.txt_pesquisa.value = "";
+            gerenciamento.txt_pesquisa.style.border = 'none';
         },
 
         pesquisar: ()=>{
             if(gerenciamento.txt_pesquisa.value != ''){
                 console.log(`Pesquisando por ${gerenciamento.txt_pesquisa.value}`);
+                const produtoPesquisado = gerenciamento.txt_pesquisa.value;
+                const produtosEncontrados = gerenciamento.produtos.filter(produto => produto.children[1].children[0].value == produtoPesquisado);
+                console.log(produtosEncontrados);
+
+                gerenciamento.mostrarApenasPesquisado(produtosEncontrados);
+                console.log(gerenciamento.btnLimparPesquisa);
+                gerenciamento.btnLimparPesquisa.style.display = 'block';
+
                 gerenciamento.pesquisaOff();
             }
             else{
                 gerenciamento.txt_pesquisa.style.border = '1px solid red';
                 gerenciamento.txt_pesquisa.style.borderRight = 'none';
-                gerenciamento.txt_pesquisa.style.borderTopRightRadius = '0px';
                 gerenciamento.txt_pesquisa.style.borderBottomRightRadius = '0px';
-
-
-                gerenciamento.txt_pesquisa.style.borderRadius = '10px';
-                gere
-
+                gerenciamento.txt_pesquisa.style.borderTopRightRadius = '0px';
             }
             
+        },
+
+        /**
+         * 
+         * @param {Array} produtosEncontrados Lista de produtos encontrados
+         */
+        mostrarApenasPesquisado: (produtosEncontrados)=>{
+            if(produtosEncontrados.length>0){
+                gerenciamento.produtos.forEach((produto)=>{
+                    var naoEncontrado = true;
+                    for(const produtoSelecionado of produtosEncontrados){
+                        if(produto.id == produtoSelecionado.id){
+                            naoEncontrado = false;
+                        }
+                    }
+
+                    if(naoEncontrado){
+                        produto.style.display = 'none';
+                    }
+                })
+            }
+        },
+
+        mostrarTudo: ()=>{
+            gerenciamento.produtos.forEach(produto => produto.style.display = 'table');
+            gerenciamento.btnLimparPesquisa.style.display = 'none';
         }
     }
 
@@ -221,10 +257,13 @@ module.exports = function initGerenciamento(){
     // Ouvindo qualquer evento de click
     document.addEventListener('click',(event)=>{
         if(event.target.id != 'pesquisar' && event.target.id!='txt_pesquisa'){
+            gerenciamento.pesquisaOff();
 
             gerenciamento.btnPesquisar.addEventListener('click',gerenciamento.pesquisaOn);
         }
     });
+
+    gerenciamento.btnLimparPesquisa.addEventListener('click', gerenciamento.mostrarTudo);
 
     return gerenciamento;
 }

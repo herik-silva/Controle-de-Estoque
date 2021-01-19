@@ -116,6 +116,7 @@ table input{
 }
 
 .gerenciamentoProdutos tr{
+    display: table;
     box-sizing: border-box;
     flex-wrap: wrap;
     width: 100%;
@@ -186,20 +187,16 @@ td:hover{
     height: 25px;
 
     border: none;
+    border-radius: 10px;
     text-align: center;
 
     transition: .2s ease-out all;
 }
 
-.busca input:focus{
-    font-weight: 700;
-    background-color: #dbdbdb;
-
+#limparBusca{
+    background-color: transparent;
     border: none;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 1px solid #000;
-    border-right: none;
+    display: none;
 }
 
 .busca .imgicon{
