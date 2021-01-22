@@ -42,3 +42,7 @@ aside{
 
     margin-bottom: 25px;
 }
+
+.icon:active{
+    border-color: gold;
+}

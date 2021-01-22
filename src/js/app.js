@@ -14,6 +14,7 @@ module.exports = function initApp(){
     
         notificacoes: '.notificacoes',
         gerenciamentoProdutos: '.gerenciamentoProdutos',
+        controleEstoque: ".controleEstoque",
 
         trocarJanela: (nome_classe)=>{
             if(nome_classe != app.janelaAtual){
@@ -62,7 +63,11 @@ module.exports = function initApp(){
         app.trocarJanela(app.gerenciamentoProdutos);
     });
 
-    app.trocarJanela(app.gerenciamentoProdutos);
+    app.btnControleEstoque.addEventListener('click', ()=>{
+        app.trocarJanela(app.controleEstoque);
+    })
+
+    app.trocarJanela(app.controleEstoque);
     
     return app;
 }
