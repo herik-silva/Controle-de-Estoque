@@ -82,7 +82,6 @@
 table div{
     min-width: 200px;
     overflow: hidden;
-    resize: horizontal;
 }
 
 table input{
@@ -122,12 +121,14 @@ table input{
     cursor: pointer;
 }
 
-thead th{
-    box-sizing: border-box;
-    flex-wrap: wrap;
+.nome-colunas{
     background-color: #101010;
     position: sticky;
-    top: 2px;
+    top: 0px;
+    height: 25px;
+}
+
+th{
     height: 25px;
 }
 

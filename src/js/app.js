@@ -67,7 +67,7 @@ module.exports = function initApp(){
         app.trocarJanela(app.controleEstoque);
     })
 
-    app.trocarJanela(app.controleEstoque);
+    app.trocarJanela(app.gerenciamentoProdutos);
     
     return app;
 }

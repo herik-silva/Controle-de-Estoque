@@ -91,9 +91,10 @@ module.exports = function initGerenciamento(){
                 gerenciamento.elementoSelecionado = tr;
                 tr.style.backgroundColor = '#252525';
                 console.log("ID Selecionado: "+gerenciamento.produtoSelecionado);
+                console.log(gerenciamento.elementoSelecionado);
             });
 
-            const table = document.querySelector('table');
+            const table = document.querySelector('tbody');
             table.appendChild(tr);
 
             table.scrollIntoView(false);
@@ -104,14 +105,18 @@ module.exports = function initGerenciamento(){
 
         removerProduto: (id)=>{
             gerenciamento.produtos.forEach((produto, index)=>{
+                console.log("Remover produto aqui");
+                console.log(produto.id);
+                console.log(id);
                 if(produto.id == id){
+                    console.log(produto);
                     for(let i=index; i<gerenciamento.produtos.length; i++){
                         gerenciamento.produtos[i] = gerenciamento.produtos[i+1];
                     }
 
-                    document.querySelector('table').removeChild(produto);
+                    document.querySelector('tbody').removeChild(gerenciamento.elementoSelecionado);
                     gerenciamento.produtos.pop();
-
+                    gerenciamento.elementoSelecionado = null;
                     return
                 }
             })
@@ -208,6 +213,7 @@ module.exports = function initGerenciamento(){
          */
         mostrarApenasPesquisado: (produtosEncontrados)=>{
             if(produtosEncontrados.length>0){
+                console.log("Entrou")
                 gerenciamento.produtos.forEach((produto)=>{
                     var naoEncontrado = true;
                     for(const produtoSelecionado of produtosEncontrados){
