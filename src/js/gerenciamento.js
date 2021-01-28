@@ -105,9 +105,6 @@ module.exports = function initGerenciamento(){
 
         removerProduto: (id)=>{
             gerenciamento.produtos.forEach((produto, index)=>{
-                console.log("Remover produto aqui");
-                console.log(produto.id);
-                console.log(id);
                 if(produto.id == id){
                     console.log(produto);
                     for(let i=index; i<gerenciamento.produtos.length; i++){
@@ -134,7 +131,7 @@ module.exports = function initGerenciamento(){
                 gerenciamento.elementoAlerta.container.style.height = '25%';
             },0);
 
-            gerenciamento.elementoAlerta.nomeProduto.innerText = produto.children[1].children[0].value;
+            gerenciamento.elementoAlerta.nomeProduto.innerText = produto.children[1].children[0].value || "Produto sem nome!";
         },
 
         fecharAlerta: ()=>{
@@ -186,6 +183,7 @@ module.exports = function initGerenciamento(){
         },
 
         pesquisar: ()=>{
+            gerenciamento.concatenarPrefixo("TESTE");
             if(gerenciamento.txt_pesquisa.value != ''){
                 console.log(`Pesquisando por ${gerenciamento.txt_pesquisa.value}`);
                 const produtoPesquisado = gerenciamento.txt_pesquisa.value;
@@ -232,6 +230,10 @@ module.exports = function initGerenciamento(){
         mostrarTudo: ()=>{
             gerenciamento.produtos.forEach(produto => produto.style.display = 'table');
             gerenciamento.btnLimparPesquisa.style.display = 'none';
+        },
+
+        concatenarPrefixo: (prefixo = "NOME:")=>{
+            
         }
     }
 

@@ -4,6 +4,7 @@ module.exports = function initApp(){
         janelaAual: '.notificacoes',
         notificacao: require('./notificacoes')(),
         gerenciamento: require('./gerenciamento')(),
+        controle: null,
 
         btnNotificacoes: document.getElementById('btnNotificacoes'),
         btnGerenciarProdutos: document.getElementById('gerenciarProdutos'),
@@ -68,6 +69,8 @@ module.exports = function initApp(){
     })
 
     app.trocarJanela(app.gerenciamentoProdutos);
+
+    app.controle = require('./controleEstoque')(app.gerenciamento.produtos);
     
     return app;
 }
