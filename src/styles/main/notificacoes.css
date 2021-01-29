@@ -111,4 +111,5 @@ button{
     height: 35px;
     background-color: var(--alertaProblemaCritico);
     color: #FFF;
+    border-top: 2px solid #FFF;
 }

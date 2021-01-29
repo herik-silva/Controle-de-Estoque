@@ -4,18 +4,15 @@ module.exports = function initApp(){
         janelaAual: '.notificacoes',
         notificacao: require('./notificacoes')(),
         gerenciamento: require('./gerenciamento')(),
-        controle: null,
 
         btnNotificacoes: document.getElementById('btnNotificacoes'),
         btnGerenciarProdutos: document.getElementById('gerenciarProdutos'),
-        btnControleEstoque: document.getElementById('controleEstoque'),
         btnEsconderMenu: document.getElementById('esconderMenu'),
         menuLateral: document.querySelector('aside'),
         main: document.querySelector('main'),
     
         notificacoes: '.notificacoes',
         gerenciamentoProdutos: '.gerenciamentoProdutos',
-        controleEstoque: ".controleEstoque",
 
         trocarJanela: (nome_classe)=>{
             if(nome_classe != app.janelaAtual){
@@ -64,13 +61,7 @@ module.exports = function initApp(){
         app.trocarJanela(app.gerenciamentoProdutos);
     });
 
-    app.btnControleEstoque.addEventListener('click', ()=>{
-        app.trocarJanela(app.controleEstoque);
-    })
-
     app.trocarJanela(app.gerenciamentoProdutos);
-
-    app.controle = require('./controleEstoque')(app.gerenciamento.produtos);
     
     return app;
 }
