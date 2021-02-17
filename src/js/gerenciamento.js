@@ -9,6 +9,12 @@ module.exports = function initGerenciamento(){
                 cancelar: document.querySelector('.cancelar')
             }
         },
+        elementoDetalhes: {
+            container: document.querySelector('.informacoes-produto'),
+            nomeProduto: document.querySelector('nome'),
+            observacoes: document.getElementById('observacoes'),
+            btnFechar: document.getElementById('fecharObs')
+        },
         elementoSelecionado: null,
         produtos: [],
         produtoSelecionado: null,
@@ -16,6 +22,7 @@ module.exports = function initGerenciamento(){
         ultimoId: 0,
 
         btnNovoProduto: document.getElementById('novoProduto'),
+        btnDetalhesProduto: document.getElementById('detalhesProduto'),
         btnRemoverProduto: document.getElementById('removerProduto'),
         txt_pesquisa: document.getElementById('txt_pesquisa'),
         btnPesquisar: document.getElementById('pesquisar'),
@@ -234,11 +241,38 @@ module.exports = function initGerenciamento(){
 
         concatenarPrefixo: (prefixo = "NOME:")=>{
             
+        },
+
+        fecharDetalhes: ()=>{
+            for(let i=0; i<gerenciamento.elementoDetalhes.container.childElementCount; i++){
+                gerenciamento.elementoDetalhes.container.children[i].style.display = 'none';
+            }
+
+            gerenciamento.elementoDetalhes.container.style.height = "0%";
+
+            setTimeout(()=>{
+                gerenciamento.elementoDetalhes.container.style.display = 'none';
+            },500);
+        },
+
+        abrirDetalhes: ()=>{
+            gerenciamento.elementoDetalhes.container.style.display = 'flex';
+
+            setTimeout(()=>{
+                gerenciamento.elementoDetalhes.container.style.height = "30%";
+                
+                for(let i=0; i<gerenciamento.elementoDetalhes.container.childElementCount; i++){
+                    gerenciamento.elementoDetalhes.container.children[i].style.display = 'block';
+                }
+
+            },100);
+
         }
     }
 
     // Adiciona um novo produto
     gerenciamento.btnNovoProduto.addEventListener('click', gerenciamento.novoProduto);
+
     
     // Mostrar Alerta
     gerenciamento.btnRemoverProduto.addEventListener('click',()=>{
@@ -249,6 +283,8 @@ module.exports = function initGerenciamento(){
 
     // Mostra o input de pesquisa
     gerenciamento.btnPesquisar.addEventListener('click',gerenciamento.pesquisaOn);
+
+    gerenciamento.btnDetalhesProduto.addEventListener('click', gerenciamento.abrirDetalhes);
 
     // Remove produto
     gerenciamento.elementoAlerta.botoes.remover.addEventListener('click',()=>{
@@ -261,6 +297,9 @@ module.exports = function initGerenciamento(){
 
     // Cancela a opção de remover
     gerenciamento.elementoAlerta.botoes.cancelar.addEventListener('click', gerenciamento.fecharAlerta);
+
+    gerenciamento.elementoDetalhes.btnFechar.addEventListener('click', gerenciamento.fecharDetalhes);
+
 
     // Ouvindo qualquer evento de click
     document.addEventListener('click',(event)=>{

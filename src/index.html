@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./styles/main/main.css">
     <link rel="stylesheet" href="./styles/main/notificacoes.css">
     <link rel="stylesheet" href="./styles/main/gerenciamento.css">
-    <link rel="stylesheet" href="./styles/main/controleEstoque.css">
     <title>Controle de Estoque</title>
 </head>
 <body class="invisivel">
@@ -71,6 +70,7 @@
             <h1 class="infoText">Gerenciamento de Produtos</h1>
 
             <div class="informacoes-produto">
+                <img src="../assets/cross.png" id="fecharObs">
                 <h2 class="nome">Produto A</h2>
                 <h3>Observações</h3>
                 <textarea id="observacoes" cols="30" rows="10"></textarea>
@@ -95,8 +95,8 @@
             <div class="ferramentas">
                 <div class="btnsGerenciamento">
                     <button id="novoProduto">Novo Produto</button>
+                    <button id="detalhesProduto">Mais Informações</button>
                     <button id="removerProduto">Remover Produto</button>
-                    
                 </div>
                 <div class="busca">
                     <button id="limparBusca">Limpar Busca</button>
